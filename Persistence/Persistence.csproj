@@ -3,8 +3,9 @@
    <PropertyGroup>
       <TargetFramework>netcoreapp3.1</TargetFramework>
       <LangVersion>latest</LangVersion>
+<!--
       <AnalysisLevel>latest</AnalysisLevel>
-      <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    -->
    </PropertyGroup>
 
    <ItemGroup>
@@ -12,7 +13,7 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies"  />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"   />
       <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" /> -->
-      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql"  />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" /> 
       <PackageReference Include="Microsoft.Extensions.Configuration" />
       <PackageReference Include="Microsoft.Extensions.Configuration.binder" />
       <PackageReference Include="Microsoft.Extensions.Configuration.json" />
@@ -23,28 +24,26 @@
    </ItemGroup>
 
 <!--
-   <Target Name="RemoveEfAnalyzer" BeforeTargets="CoreCompile">
+   <Target Name="RemoveNetAnalyzer" BeforeTargets="CoreCompile">
      <ItemGroup>
        <Analyzer Remove="@(Analyzer)" Condition="'%(Filename)' == 'Microsoft.CodeAnalysis.NetAnalyzers'" />
      </ItemGroup>
    </Target>
--->
-
-<!--
+ -->
+ <!--
    <Target Name="RemoveEfAnalyzer" BeforeTargets="CoreCompile">
      <ItemGroup>
-       <Analyzer Remove="@(Analyzer)" Condition="'%(Analyzer.NuGetPackageId)' == 'Microsoft.EntityFrameworkCore.Analyzers'" />
+       <Analyzer Remove="@(Analyzer)" Condition="'%(Filename)' == 'Microsoft.EntityFrameworkCore.Analyzers'" />
      </ItemGroup>
    </Target>
--->
-<!--
+ -->
+ <!--
 <Target Name="DisableAnalyzers" BeforeTargets="CoreCompile">
   <ItemGroup>
     <Analyzer Remove="@(Analyzer)" />
   </ItemGroup>
 </Target>
 -->
-
 <!--
 <Target Name="DisableAnalyzers" BeforeTargets="CoreCompile">
   <ItemGroup>

@@ -28,13 +28,14 @@ namespace Persistence
                options.EnableSensitiveDataLogging();
 
             options.UseLazyLoadingProxies();
+            /*
             options.UseMySql(connectionString,
                mysqlOptions =>
                {
                   mysqlOptions.CharSet(CharSet.Utf8Mb4);
                   mysqlOptions.CharSetBehavior(CharSetBehavior.NeverAppend);
-                  mysqlOptions.ServerVersion(new Version(10, 3, 12), ServerType.MariaDb);
                });
+               */
          });
 
          services.AddScoped<IDbInitializer, DbInitializer>();
