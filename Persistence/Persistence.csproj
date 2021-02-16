@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+   <PropertyGroup>
+      <TargetFramework>netcoreapp3.1</TargetFramework>
+      <LangVersion>latest</LangVersion>
+      <AnalysisLevel>latest</AnalysisLevel>
+      <EnableNETAnalyzers>false</EnableNETAnalyzers>
+   </PropertyGroup>
+
+   <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design"  PrivateAssets="All" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies"  />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational"   />
+      <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.1" /> -->
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql"  />
+      <PackageReference Include="Microsoft.Extensions.Configuration" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.binder" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.json" />
+   </ItemGroup>
+
+   <ItemGroup>
+      <ProjectReference Include="..\Core\Core.csproj" />
+   </ItemGroup>
+
+<!--
+   <Target Name="RemoveEfAnalyzer" BeforeTargets="CoreCompile">
+     <ItemGroup>
+       <Analyzer Remove="@(Analyzer)" Condition="'%(Filename)' == 'Microsoft.CodeAnalysis.NetAnalyzers'" />
+     </ItemGroup>
+   </Target>
+-->
+
+<!--
+   <Target Name="RemoveEfAnalyzer" BeforeTargets="CoreCompile">
+     <ItemGroup>
+       <Analyzer Remove="@(Analyzer)" Condition="'%(Analyzer.NuGetPackageId)' == 'Microsoft.EntityFrameworkCore.Analyzers'" />
+     </ItemGroup>
+   </Target>
+-->
+<!--
+<Target Name="DisableAnalyzers" BeforeTargets="CoreCompile">
+  <ItemGroup>
+    <Analyzer Remove="@(Analyzer)" />
+  </ItemGroup>
+</Target>
+-->
+
+<!--
+<Target Name="DisableAnalyzers" BeforeTargets="CoreCompile">
+  <ItemGroup>
+    <SlowAnalyzer Include="@(Analyzer)" Condition="%(Filename) == 'Microsoft.CodeAnalysis.NetAnalyzers'" />
+    <Analyzer Remove="@(SlowAnalyzer)"/> 
+  </ItemGroup>
+  <Message Text="Removed analyzers from $(AssemblyName): @(SlowAnalyzer)" Importance="high" Condition="'@(SlowAnalyzer)'!=''"/>
+  <Message Text="Retained analyzers in $(AssemblyName): @(Analyzer)" Importance="high" Condition="'@(SlowAnalyzer)'!=''"/>
+</Target>
+-->
+</Project>

@@ -1,0 +1,1 @@
+dotnet ef --startup-project ../Presentation/Presentation.csproj database update $1 --context AppDbContext

@@ -1,0 +1,1 @@
+dotnet ef migrations --startup-project ../Presentation/Presentation.csproj remove --context AppDbContext
